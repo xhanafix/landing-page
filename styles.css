@@ -1,0 +1,387 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --background-color: #f5f6fa;
+    --text-color: #2c3e50;
+    --border-color: #dcdde1;
+    --card-background: white;
+    --progress-background: #eef2f7;
+    --progress-color: #3498db;
+}
+
+[data-theme="dark"] {
+    --primary-color: #ecf0f1;
+    --secondary-color: #3498db;
+    --background-color: #1a1a1a;
+    --text-color: #ecf0f1;
+    --border-color: #2c3e50;
+    --card-background: #2c2c2c;
+    --progress-background: #3a3a3a;
+    --progress-color: #3498db;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.input-section {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+#generateBtn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#resetBtn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+#downloadBtn {
+    background-color: #27ae60;
+    color: white;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.output-section {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#salesPageContent {
+    white-space: pre-wrap;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+#apiKey {
+    font-family: monospace;
+}
+
+small {
+    display: block;
+    color: #666;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+}
+
+select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+/* Theme Switch Styles */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.theme-switch-wrapper em {
+    margin-left: 10px;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked + .slider {
+    background-color: var(--secondary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Progress Indicator Styles */
+.progress-container {
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--progress-background);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+}
+
+.step.active .step-circle {
+    background-color: var(--progress-color);
+    color: white;
+}
+
+.step-text {
+    font-size: 0.875rem;
+    color: var(--text-color);
+}
+
+.progress-bar {
+    height: 4px;
+    background-color: var(--progress-background);
+    border-radius: 2px;
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--progress-color);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .progress-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .step {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .step-circle {
+        margin: 0;
+    }
+
+    .theme-switch-wrapper {
+        top: 10px;
+        right: 10px;
+    }
+
+    .footer {
+        padding: 1rem;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Update the footer styles */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    color: var(--text-color);
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--card-background);
+}
+
+.footer p {
+    margin: 0.5rem 0;
+}
+
+.made-with-love {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.heart {
+    display: inline-block;
+    animation: heartbeat 1.5s ease infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Update the mobile styles for footer */
+@media (max-width: 768px) {
+    .footer {
+        padding: 1rem;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .made-with-love {
+        font-size: 0.8rem;
+    }
+} 

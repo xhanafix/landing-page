@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sales Page Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        <em>Mod Gelap</em>
+    </div>
+    <div class="container">
+        <h1>AI Sales Page Generator</h1>
+        
+        <!-- Input Form -->
+        <div class="input-section">
+            <form id="salesPageForm">
+                <div class="form-group">
+                    <label for="productName">Nama Produk/Perkhidmatan:</label>
+                    <input type="text" id="productName" required placeholder="Contoh: Kursus Digital Marketing">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Penerangan Ringkas:</label>
+                    <textarea id="description" required placeholder="Sila berikan penerangan ringkas tentang produk atau perkhidmatan anda"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="apiKey">OpenRouter API Key:</label>
+                    <input type="password" id="apiKey" required>
+                    <small>API key anda akan disimpan dalam pelayar web</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="modelSelect">Model AI:</label>
+                    <select id="modelSelect" required>
+                        <option value="google/gemini-2.0-flash-exp:free">Gemini 2.0 Flash (Free)</option>
+                        <option value="google/learnlm-1.5-pro-experimental:free">LearnLM 1.5 Pro (Free)</option>
+                    </select>
+                </div>
+                
+                <div class="button-group">
+                    <button type="submit" id="generateBtn">Jana Kandungan</button>
+                    <button type="reset" id="resetBtn">Reset</button>
+                    <button type="button" id="downloadBtn" disabled>Muat Turun (.txt)</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Output Section -->
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-steps">
+                <div class="step active" id="step1">
+                    <div class="step-circle">1</div>
+                    <div class="step-text">Menganalisa Produk</div>
+                </div>
+                <div class="step" id="step2">
+                    <div class="step-circle">2</div>
+                    <div class="step-text">Menjana Kandungan</div>
+                </div>
+                <div class="step" id="step3">
+                    <div class="step-circle">3</div>
+                    <div class="step-text">Menyiapkan Halaman</div>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        <div class="output-section" id="outputSection">
+            <h2>Kandungan Halaman Jualan</h2>
+            <div id="salesPageContent"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2025 <a href="https://www.hanafihassan.com" target="_blank">www.hanafihassan.com</a></p>
+        <p class="made-with-love">Made with <span class="heart">❤️</span> by <a href="https://www.hanafihassan.com" target="_blank">www.hanafihassan.com</a></p>
+    </footer>
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
